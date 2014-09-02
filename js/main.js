@@ -1,14 +1,36 @@
 ;(function($, window, document, undefined) {
     var $win = $(window);
     var $doc = $(document);
+    var userChoice;
 
     $doc.ready(function() {
-        play();
+        $("#btn-play").on('click', function(event) {
+            var $this = $(this);
+
+            $(".area-head").animate({
+                "top": "15%"
+            }, 200);
+
+            $this.parents("li").fadeOut();
+            $this.parents(".area").find(".area-body").fadeIn();
+
+            $("#user-choice a").on('click', function(event) {
+                makeChoice = $(this).text().toLowerCase();
+
+                console.log(makeChoice);
+
+                play(makeChoice);
+
+                event.preventDefault();
+            });
+
+
+            event.preventDefault();
+        });
     });
 
     // play function
-    var play = function() {
-        var userChoice = prompt("Do you choose rock, paper or scissors?");
+    var play = function(userChoice) {
         var computerChoice = Math.random();
 
         if (computerChoice < 0.34) {
@@ -19,28 +41,29 @@
             computerChoice = "scissors";
         };
 
-        console.log("Computer: " + computerChoice);
+        $("<p>Computer Choose: " + computerChoice + "</p>").appendTo(".result");
+        $("<p>You Choose: " + userChoice + "</p>").appendTo(".result");
 
         var compare = function(choice1, choice2) {
             if ( choice1 === choice2) {
-                alert("The result is a tie!");
+                $("<p>The result is a tie!</p>").appendTo(".result");
             } else if (choice1 === "rock") {
                 if (choice2 === "scissors") {
-                    alert("rock wins");
+                    $("<p>rock wins</p>").appendTo(".result");
                 } else if (choice2 === "paper") {
-                    alert("paper wins");
+                    $("<p>paper wins</p>").appendTo(".result");
                 }
             } else if ( choice1 === "paper") {
                 if (choice2 === "rock") {
-                    alert("paper wins");
+                    $("<p>paper wins</p>").appendTo(".result");
                 } else if (choice2 === "scissors") {
-                    alert("scissors wins");
+                    $("<p>scissors wins</p>").appendTo(".result");
                 }
             } else if ( choice1 === "scissors") {
                 if (choice2 === "rock") {
-                    alert("rock wins");
+                    $("<p>rock wins</p>").appendTo(".result");
                 } else  if (choice2 === "paper") {
-                    alert("scissors wins");
+                    $("<p>scissors wins</p>").appendTo(".result");
                 }
             }
         }
