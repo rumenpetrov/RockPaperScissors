@@ -15,15 +15,17 @@
             $this.parents(".area").find(".area-body").fadeIn();
 
             $("#user-choice a").on('click', function(event) {
-                makeChoice = $(this).text().toLowerCase();
+                var makeChoice;
+                var $this = $(this);
 
-                console.log(makeChoice);
+                $this.addClass("clicked").siblings().removeClass("clicked");
+
+                makeChoice = $this.text().toLowerCase();
 
                 play(makeChoice);
 
                 event.preventDefault();
             });
-
 
             event.preventDefault();
         });
@@ -41,29 +43,29 @@
             computerChoice = "scissors";
         };
 
-        $("<p>Computer Choose: " + computerChoice + "</p>").appendTo(".result");
-        $("<p>You Choose: " + userChoice + "</p>").appendTo(".result");
+        $(".player-first").text("You Choose: " + userChoice);
+        $(".player-second").text("Computer Choose: " + computerChoice);
 
         var compare = function(choice1, choice2) {
             if ( choice1 === choice2) {
-                $("<p>The result is a tie!</p>").appendTo(".result");
+                $(".game-result").text("The result is a tie!");
             } else if (choice1 === "rock") {
                 if (choice2 === "scissors") {
-                    $("<p>rock wins</p>").appendTo(".result");
+                    $(".game-result").text("rock wins");
                 } else if (choice2 === "paper") {
-                    $("<p>paper wins</p>").appendTo(".result");
+                    $(".game-result").text("paper wins");
                 }
             } else if ( choice1 === "paper") {
                 if (choice2 === "rock") {
-                    $("<p>paper wins</p>").appendTo(".result");
+                    $(".game-result").text("paper wins");
                 } else if (choice2 === "scissors") {
-                    $("<p>scissors wins</p>").appendTo(".result");
+                    $(".game-result").text("scissors wins");
                 }
             } else if ( choice1 === "scissors") {
                 if (choice2 === "rock") {
-                    $("<p>rock wins</p>").appendTo(".result");
+                    $(".game-result").text("rock wins");
                 } else  if (choice2 === "paper") {
-                    $("<p>scissors wins</p>").appendTo(".result");
+                    $(".game-result").text("scissors wins");
                 }
             }
         }
