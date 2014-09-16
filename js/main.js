@@ -33,43 +33,45 @@
 
     // play function
     var play = function(userChoice) {
-        var computerChoice = Math.random();
+        setTimeout(function() {
+            var computerChoice = Math.random();
 
-        if (computerChoice < 0.34) {
-            computerChoice = "rock";
-        } else if(computerChoice <= 0.67) {
-            computerChoice = "paper";
-        } else {
-            computerChoice = "scissors";
-        };
+            if (computerChoice < 0.34) {
+                computerChoice = "rock";
+            } else if(computerChoice <= 0.67) {
+                computerChoice = "paper";
+            } else {
+                computerChoice = "scissors";
+            };
 
-        $(".player-first").text("You Choose: " + userChoice);
-        $(".player-second").text("Computer Choose: " + computerChoice);
+            $(".player-first").text("You Choose: " + userChoice);
+            $(".player-second").text("Computer Choose: " + computerChoice);
 
-        var compare = function(choice1, choice2) {
-            if ( choice1 === choice2) {
-                $(".game-result").text("The result is a tie!");
-            } else if (choice1 === "rock") {
-                if (choice2 === "scissors") {
-                    $(".game-result").text("rock wins");
-                } else if (choice2 === "paper") {
-                    $(".game-result").text("paper wins");
-                }
-            } else if ( choice1 === "paper") {
-                if (choice2 === "rock") {
-                    $(".game-result").text("paper wins");
-                } else if (choice2 === "scissors") {
-                    $(".game-result").text("scissors wins");
-                }
-            } else if ( choice1 === "scissors") {
-                if (choice2 === "rock") {
-                    $(".game-result").text("rock wins");
-                } else  if (choice2 === "paper") {
-                    $(".game-result").text("scissors wins");
+            var compare = function(choice1, choice2) {
+                if ( choice1 === choice2) {
+                    $(".game-result").text("The result is a tie!");
+                } else if (choice1 === "rock") {
+                    if (choice2 === "scissors") {
+                        $(".game-result").text("rock wins");
+                    } else if (choice2 === "paper") {
+                        $(".game-result").text("paper wins");
+                    }
+                } else if ( choice1 === "paper") {
+                    if (choice2 === "rock") {
+                        $(".game-result").text("paper wins");
+                    } else if (choice2 === "scissors") {
+                        $(".game-result").text("scissors wins");
+                    }
+                } else if ( choice1 === "scissors") {
+                    if (choice2 === "rock") {
+                        $(".game-result").text("rock wins");
+                    } else  if (choice2 === "paper") {
+                        $(".game-result").text("scissors wins");
+                    }
                 }
             }
-        }
 
-        compare(userChoice, computerChoice);
+            compare(userChoice, computerChoice);
+        }, 500);
     };
 })(jQuery, window, document);
