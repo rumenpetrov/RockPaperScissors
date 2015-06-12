@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Rock Paper Scissors Game</title>
-
+	
+	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
@@ -26,16 +27,26 @@
 		<ul class="area-body">
 			<li>
 				<div class="btns" id="user-choice">
-					<a href="#" class="btn btn-gray">Rock</a>
-					<a href="#" class="btn btn-gray">Paper</a>
-					<a href="#" class="btn btn-gray">Scissors</a>
+					<a href="#" class="btn btn-game btn-rock">Rock</a>
+					<a href="#" class="btn btn-game btn-paper">Paper</a>
+					<a href="#" class="btn btn-game btn-scissors">Scissors</a>
 				</div><!-- /.btns -->
 			</li>
 			<li>
 				<div class="result">
-					<p class="player player-first"></p>
+					<p class="player player-first">
+						<strong>You Choose: </strong>
+						<span></span>
+					</p>
 					
-					<p class="player player-second"></p>
+					<p class="player player-second">
+						<strong>Computer Choose: </strong>
+						<span></span>
+					</p>
+
+					<div class="loader">
+						<img src="css/images/loader.gif" alt="" />
+					</div><!-- /.loader -->
 
 					<p class="game-result"></p>
 				</div><!-- /.result -->

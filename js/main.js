@@ -27,8 +27,13 @@
 
             makeChoice = $this.text().toLowerCase();
 
-            // clear result text after every click
+            // clear choise and result text after every click
             $(".game-result").text("");
+            $(".player-first span").text(" ");
+            $(".player-second span").text(" ");
+
+            // show loader
+            $('.loader').fadeIn(200);
 
             // execute play function
             play(makeChoice);
@@ -76,12 +81,16 @@
         };
 
         // print out the choices
-        $(".player-first").text("You Choose: " + userChoice);
-        $(".player-second").text("Computer Choose: " + computerChoice);
+        $(".player-first span").append(userChoice);
 
         // execute compare function with delay
         setTimeout(function() {
+            // hide loader
+            $('.loader').hide();
+
             compare(userChoice, computerChoice)
-        }, 400);
+
+            $(".player-second span").text(computerChoice);
+        }, 600);
     };
 })(jQuery, window, document);
