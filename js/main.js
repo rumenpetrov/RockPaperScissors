@@ -28,9 +28,7 @@
             makeChoice = $this.text().toLowerCase();
 
             // clear choise and result text after every click
-            $(".game-result").text("");
-            $(".player-first span").text(" ");
-            $(".player-second span").text(" ");
+            clear();
 
             // show loader
             $('.loader').fadeIn(200);
@@ -80,17 +78,23 @@
             computerChoice = "scissors";
         };
 
-        // print out the choices
-        $(".player-first span").append(userChoice);
+        // print player's choices
+        $(".player-first span").text(userChoice);
 
         // execute compare function with delay
         setTimeout(function() {
+            compare(userChoice, computerChoice)
+            
             // hide loader
             $('.loader').hide();
 
-            compare(userChoice, computerChoice)
-
             $(".player-second span").text(computerChoice);
         }, 600);
+    };
+
+    // clear choise and result text after every click
+    var clear = function() {
+        $(".game-result").text("");
+        $(".player-second span").text(" ");
     };
 })(jQuery, window, document);
